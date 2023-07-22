@@ -17,6 +17,8 @@ exports.checkForMatch =
     // e.g. {'name': 'Marie', 'age': 66}
     const newValue = event.data.after.data();
 
+    const docID = event.params.docID;
+
     // access a particular field as you would any JS property
     const numMatches = newValue.numMatches;
 
@@ -31,6 +33,7 @@ exports.checkForMatch =
     if (numMatches == numPlayers) {
       return db.doc("games/"+gameCode).set({
         startGame: 0,
+        cardMatched: docID,
       }, {
         merge: true,
       });
