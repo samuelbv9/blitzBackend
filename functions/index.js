@@ -32,8 +32,8 @@ exports.checkForMatch =
 
     if (numMatches == numPlayers) {
       return db.doc("games/"+gameCode).set({
-        startGame: 0,
         cardMatched: docID,
+        startGame: 0,
       }, {
         merge: true,
       });
